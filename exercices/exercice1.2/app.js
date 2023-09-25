@@ -3,9 +3,13 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+let cptHome = 0;
+let cptFilms = 0;
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var filmsRouteur = require('./routes/films');
+const { log } = require('console');
 
 var app = express();
 
@@ -14,6 +18,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(function (req, res, next) {
+    if (req.originalUrl === "/") {
+        cptHome++;
+    } else if (req.originalUrl === "/films") {
+        cptFilms++;
+    }
+    console.log("request counter : " + "\n" +
+        req.method + " " + req.originalUrl + " : " + cptHome + "\n" +
+        req.method + " " + req.originalUrl + " : " + cptFilms)
+    next();
+})
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
