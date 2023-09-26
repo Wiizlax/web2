@@ -1,0 +1,14 @@
+### Read all films with File variable
+@baseUrl = http://localhost:3000
+GET {{baseUrl}}/films
+
+### Create a film
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"Barbie",
+    "duration":170,
+    "budget":10,
+    "link":"https://fr.wikipedia.org/wiki/Barbie_(film)"
+}
