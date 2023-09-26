@@ -63,7 +63,7 @@ router.post('/', (req, res) => {
     const budget = req?.body?.budget > 0 ? req.body.budget : undefined;
     const link = req?.body?.link?.length !== 0 ? req.body.link : undefined;
 
-    console.log('POST /pizzas');
+    console.log('POST /films');
 
     if (!title || !duration || !budget || !link) return res.sendStatus(400); // error code '400 Bad request'
 
