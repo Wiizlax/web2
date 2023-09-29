@@ -31,21 +31,18 @@ const films = [
 router.get('/', (req, res, next) => {
     const minimumDuration = req.query['minimum-duration'];
     if (!minimumDuration) {
-        // Si le paramètre minimum-duration n'est pas spécifié, renvoyer tous les films.
         return res.json(films);
     }
     const minDuration = parseFloat(minimumDuration);
     if (isNaN(minDuration) || minDuration < 0) {
-        // Si le paramètre minimum-duration n'est pas un nombre positif, renvoyer une erreur.
-        return res.status(400).json({ error: 'Invalid minimum-duration parameter' });
+        return res.status(400).json({ error: 'paramètre invalide de minimum-duration' });
     }
-    // Filtrer les films dont la durée est supérieure ou égale à minDuration.
     const filmsByDuration = films.filter(film => film.duration >= minDuration);
     res.json(filmsByDuration);
 });
 
 
-// Read the pizza identified by an id in the menu
+// Read the film identified by an id in the list
 router.get('/:id', (req, res) => {
     console.log(`GET /films/${req.params.id}`);
 
@@ -56,7 +53,7 @@ router.get('/:id', (req, res) => {
     res.json(films[indexOfFilmFound]);
 });
 
-// Create a pizza to be added to the menu.
+// Create a film to be added to the list.
 router.post('/', (req, res) => {
     const title = req?.body?.title?.length !== 0 ? req.body.title : undefined;
     const duration = req?.body?.duration > 0 ? req.body.duration : undefined;
@@ -65,11 +62,16 @@ router.post('/', (req, res) => {
 
     console.log('POST /films');
 
-    if (!title || !duration || !budget || !link) return res.sendStatus(400); // error code '400 Bad request'
+    if (!title || !duration || !budget || !link) return res.sendStatus(400).json({ error: 'Paramètres invalides'}); // error code '400 Bad request'
 
     const lastItemIndex = films?.length !== 0 ? films.length - 1 : undefined;
     const lastId = lastItemIndex !== undefined ? films[lastItemIndex]?.id : 0;
     const nextId = lastId + 1;
+
+    const existingFilm = films.find(film => film.title.toLowerCase() === title.toLowerCase());
+    if (existingFilm) {
+        return res.status(409).json({ error: 'Un film avec le même titre existe déjà !' });
+    }
 
     const newFilm = {
         id: nextId,
@@ -83,6 +85,6 @@ router.post('/', (req, res) => {
 
     res.json(newFilm);
 });
-
+  
 
 module.exports = router;

@@ -12,3 +12,6 @@ Content-Type: application/json
     "budget":10,
     "link":"https://fr.wikipedia.org/wiki/Barbie_(film)"
 }
+
+### delete a film 
+DELETE {{baseUrl}}/films/3
