@@ -21,10 +21,10 @@ POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
-    "title":"Barbie",
-    "duration": 125,
-    "budget": 12,
-    "link":"https://fr.wikipedia.org/wiki/Barbie_(film)"
+    "title":"Spiderman",
+    "duration": 90,
+    "budget": 9,
+    "link":"https://fr.wikipedia.org/wiki/Spider-Man"
 }
 
 ### Delete film identified by 2
