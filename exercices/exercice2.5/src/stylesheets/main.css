@@ -1,0 +1,53 @@
+/* Réinitialisation des styles par défaut du navigateur */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styles de base pour le corps de la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+/* Styles pour l'en-tête */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+}
+
+header nav ul li {
+  display: inline;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
+/* Styles pour les affiches de films */
+.movie-posters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-card {
+  width: 200px; /* Ajustez la largeur des affiches selon vos besoins */
+  margin: 10px;
+}
+
+.image-card img {
+  width: 100%;
+  height: auto;
+}
+
