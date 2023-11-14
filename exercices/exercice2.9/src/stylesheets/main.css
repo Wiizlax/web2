@@ -1,0 +1,43 @@
+/* Réinitialisation des styles par défaut du navigateur */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styles de base pour le corps de la page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #dc2929;
+}
+
+/* Styles pour l'en-tête */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 0;
+}
+
+/* Styles pour les affiches de films */
+.movie-posters {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.image-card {
+  width: 200px; /* Ajustez la largeur des affiches selon vos besoins */
+  margin: 10px;
+}
+
+.image-card img {
+  width: 100%;
+  height: aut;
+}
+
+.centered-text {
+  display: flex;
+  justify-content: center;
+  height: 100vh; /* Pour centrer verticalement sur toute la hauteur de la vue */
+}
