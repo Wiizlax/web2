@@ -1,0 +1,5 @@
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Ajoutez la valeur d'espace souhaitée */
+  }
